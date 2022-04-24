@@ -4,3 +4,4 @@ export * from "./home";
 export * from "./products";
 export * from "./signin";
 export * from "./signup";
+export * from "./NotFound";
