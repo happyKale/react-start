@@ -12,7 +12,7 @@ import {
 function AppRouter() {
   return (
     <>
-      <Route path="/" component={HomeScreen} />
+      <Route path="/" exact component={HomeScreen} />
       <Route path="/admin" component={AdminScreen} />
       <Route path="/carts" component={CartsScreen} />
       <Route path="/products/:id" component={ProductsScreen} />
