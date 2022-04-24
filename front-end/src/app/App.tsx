@@ -1,4 +1,5 @@
 import React from "react";
+import { AppRouter } from "./routes";
 
 function App() {
   // prop destruction
@@ -17,7 +18,7 @@ function App() {
 
   // handlers
 
-  return <div className="App"></div>;
+  return <AppRouter />;
 }
 
 export default App;
