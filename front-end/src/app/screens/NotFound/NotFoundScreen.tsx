@@ -1,7 +1,36 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function NotFoundScreen() {
-  return <div>NotFound</div>;
+  // prop destruction
+
+  // lib hooks
+  let history = useHistory();
+
+  // state, ref, querystring hooks
+
+  // form hooks
+
+  // query hooks
+
+  // calculated values
+
+  // effects
+
+  // handlers
+
+  return (
+    <div>
+      NotFound
+      <button
+        onClick={() => {
+          history.goBack();
+        }}
+      >
+        뒤로가기
+      </button>
+    </div>
+  );
 }
 
 export { NotFoundScreen };
