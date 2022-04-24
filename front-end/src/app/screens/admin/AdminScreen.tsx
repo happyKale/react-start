@@ -1,6 +1,6 @@
 import React from "react";
 
-function Admin() {
+function AdminScreen() {
   // prop destruction
 
   // lib hooks
@@ -20,4 +20,4 @@ function Admin() {
   return <div>Admin</div>;
 }
 
-export { Admin };
+export { AdminScreen };
