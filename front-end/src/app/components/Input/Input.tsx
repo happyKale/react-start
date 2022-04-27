@@ -7,6 +7,10 @@ type InputProps = {
   placeholder?: string;
   name?: string;
   required?: boolean;
+  margin?: string;
+  padding?: string;
+  boxSizing?: string;
+  border?: string;
 };
 
 function Input(props: InputProps) {
@@ -33,12 +37,21 @@ function Input(props: InputProps) {
   );
 }
 
+Input.defaultProps = {
+  margin: "0",
+  padding: "0 0 0 10px",
+  boxSizing: "border-box",
+  border: "1px solid gray",
+};
+
 const StyledInput = styled.input<InputProps>`
   width: 300px;
   height: 35px;
   border-radius: 5px;
-  border: 1px solid black;
-  padding-left: 10px;
+  ${(props) => (props.border ? `border: ${props.border}` : "")};
+  ${(props) => (props.margin ? `margin: ${props.margin}` : "")};
+  ${(props) => (props.padding ? `padding: ${props.padding}` : "")};
+  ${(props) => (props.boxSizing ? `box-sizing: ${props.boxSizing}` : "")};
 `;
 
 export { Input };
