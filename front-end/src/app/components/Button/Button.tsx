@@ -7,6 +7,12 @@ type ButtonProps = {
   height?: string;
   border?: string;
   radius?: string;
+  margin?: string;
+  padding?: string;
+  backgroundColor?: string;
+  boxSizing?: string;
+  weight?: string;
+  color?: string;
 };
 
 function Button(props: ButtonProps) {
@@ -31,6 +37,13 @@ function Button(props: ButtonProps) {
 Button.defaultProps = {
   width: "300px",
   height: "35px",
+  margin: "0",
+  padding: "0",
+  boxSizing: "border-box",
+  radius: "5px",
+  border: "none",
+  color: "white",
+  weight: "bold",
 };
 
 const StyledButton = styled.button<ButtonProps>`
@@ -38,6 +51,13 @@ const StyledButton = styled.button<ButtonProps>`
   ${(props) => (props.height ? `height: ${props.height}` : "")};
   ${(props) => (props.border ? `border: ${props.border}` : "")};
   ${(props) => (props.radius ? `border-radius: ${props.radius}` : "")};
+  ${(props) => (props.margin ? `margin: ${props.margin}` : "")};
+  ${(props) => (props.padding ? `padding: ${props.padding}` : "")};
+  ${(props) =>
+    props.backgroundColor ? `background-color: ${props.backgroundColor}` : ""};
+  ${(props) => (props.boxSizing ? `box-sizing: ${props.boxSizing}` : "")};
+  ${(props) => (props.color ? `color: ${props.color}` : "")};
+  ${(props) => (props.weight ? `font-weight: ${props.weight}` : "")};
 `;
 
 export { Button };
