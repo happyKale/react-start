@@ -18,6 +18,21 @@ type FlexBoxProps = {
 };
 
 function FlexBox(props: FlexBoxProps) {
+  // prop destruction
+
+  // lib hooks
+
+  // state, ref, querystring hooks
+
+  // form hooks
+
+  // query hooks
+
+  // calculated values
+
+  // effects
+
+  // handlers
   return <StyledBox {...props}>{props.children}</StyledBox>;
 }
 

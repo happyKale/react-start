@@ -10,6 +10,21 @@ type ButtonProps = {
 };
 
 function Button(props: ButtonProps) {
+  // prop destruction
+
+  // lib hooks
+
+  // state, ref, querystring hooks
+
+  // form hooks
+
+  // query hooks
+
+  // calculated values
+
+  // effects
+
+  // handlers
   return <StyledButton {...props}>{props.children}</StyledButton>;
 }
 
