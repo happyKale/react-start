@@ -13,6 +13,8 @@ type ButtonProps = {
   boxSizing?: string;
   weight?: string;
   color?: string;
+  fontSize?: string;
+  display?: string;
 };
 
 function Button(props: ButtonProps) {
@@ -47,6 +49,9 @@ Button.defaultProps = {
 };
 
 const StyledButton = styled.button<ButtonProps>`
+  &:hover {
+    cursor: pointer;
+  }
   ${(props) => (props.width ? `width: ${props.width}` : "")};
   ${(props) => (props.height ? `height: ${props.height}` : "")};
   ${(props) => (props.border ? `border: ${props.border}` : "")};
@@ -58,6 +63,8 @@ const StyledButton = styled.button<ButtonProps>`
   ${(props) => (props.boxSizing ? `box-sizing: ${props.boxSizing}` : "")};
   ${(props) => (props.color ? `color: ${props.color}` : "")};
   ${(props) => (props.weight ? `font-weight: ${props.weight}` : "")};
+  ${(props) => (props.fontSize ? `font-size: ${props.fontSize}` : "")};
+  ${(props) => (props.display ? `display: ${props.display}` : "")};
 `;
 
 export { Button };
