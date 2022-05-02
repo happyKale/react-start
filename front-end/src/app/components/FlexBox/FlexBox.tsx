@@ -15,6 +15,8 @@ type FlexBoxProps = {
   width: string;
   height?: string;
   border?: string;
+  margin?: string;
+  boxSizing?: string;
 };
 
 function FlexBox(props: FlexBoxProps) {
@@ -44,6 +46,7 @@ FlexBox.defaultProps = {
 
 const StyledBox = styled.div<FlexBoxProps>`
   display: flex;
+  box-sizing: border-box;
   ${(props) => (props.direction ? `flex-direction: ${props.direction}` : "")};
   ${(props) => (props.wrap ? `flex-wrap: ${props.wrap}` : "")};
   ${(props) =>
@@ -59,6 +62,7 @@ const StyledBox = styled.div<FlexBoxProps>`
   ${(props) => (props.width ? `width: ${props.width}` : "")};
   ${(props) => (props.height ? `height: ${props.height}` : "")};
   ${(props) => (props.border ? `border: ${props.border}` : "")};
+  ${(props) => (props.margin ? `margin: ${props.margin}` : "")};
 `;
 
 export { FlexBox };
