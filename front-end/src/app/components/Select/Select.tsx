@@ -3,11 +3,15 @@ import styled from "styled-components";
 import { FlexBox } from "../FlexBox";
 
 type SelectProps = {
-  optionList: Array<{ name: string; selected: boolean }>;
-  label?: boolean;
+  onChange?: React.ChangeEventHandler<HTMLSelectElement> &
+    React.FormEventHandler<HTMLDivElement>;
+  optionList: Array<{ name: string }>;
+  isLabel?: boolean;
+  name?: string;
+  defaultValue?: string;
   labelWidth?: string;
   labelHeight?: string;
-  name?: string;
+  labelName?: string;
   width?: string;
   height?: string;
   padding?: string;
@@ -21,7 +25,7 @@ type SelectProps = {
 
 function Select(props: SelectProps) {
   // prop destruction
-  const { optionList, label, labelHeight, labelWidth, name } = props;
+  const { optionList, isLabel, labelHeight, labelWidth, labelName } = props;
 
   // lib hooks
 
@@ -36,23 +40,19 @@ function Select(props: SelectProps) {
   // effects
 
   // handlers
-  return label ? (
+  return isLabel ? (
     <FlexBox width={labelWidth} height={labelHeight} direction="column">
-      <StyledLabel htmlFor={name}>{name}</StyledLabel>
+      <StyledLabel htmlFor={labelName}>{labelName}</StyledLabel>
       <StyledSelect {...props}>
         {optionList.map((item) => {
-          return (
-            <option selected={item.selected ? true : false}>{item.name}</option>
-          );
+          return <option key={item.name}>{item.name}</option>;
         })}
       </StyledSelect>
     </FlexBox>
   ) : (
     <StyledSelect {...props}>
       {optionList.map((item) => {
-        return (
-          <option selected={item.selected ? true : false}>{item.name}</option>
-        );
+        return <option key={item.name}>{item.name}</option>;
       })}
     </StyledSelect>
   );
@@ -70,6 +70,9 @@ Select.defaultProps = {
 const StyledLabel = styled.label``;
 
 const StyledSelect = styled.select<SelectProps>`
+  &:hover {
+    cursor: pointer;
+  }
   ${(props) => (props.width ? `width: ${props.width}` : "")};
   ${(props) => (props.height ? `height: ${props.height}` : "")};
   ${(props) => (props.radius ? `border-radius: ${props.radius}` : "")};
