@@ -7,3 +7,4 @@ export * from "./Select";
 export * from "./Form";
 export * from "./Title";
 export * from "./Footer";
+export * from "./Header";
