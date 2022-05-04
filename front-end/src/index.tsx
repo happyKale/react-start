@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
 import App from "./app/App";
 
 // 리덕스를 주입해줄 프로바이더를 불러옵니다!
@@ -13,9 +12,7 @@ import store from "./app/redux/configStore";
 // 현재 내가 어느 주소를 보고 있는 지 쉽게 알려준다.
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <App />
   </Provider>,
   document.getElementById("root")
 );
