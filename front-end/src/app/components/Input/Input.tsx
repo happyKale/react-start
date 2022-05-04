@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { FlexBox } from "../FlexBox";
 
 type InputProps = {
+  onChange?: React.FormEventHandler<HTMLDivElement>;
   type: string;
   value?: string;
   placeholder?: string;
   name?: string;
+  labelName?: string;
   required?: boolean;
   width?: string;
   height?: string;
@@ -19,15 +21,16 @@ type InputProps = {
   borderBottom?: string;
   borderTop?: string;
   radius?: string;
-  label?: boolean;
+  isLabel?: boolean;
   labelWidth?: string;
   labelHeight?: string;
   labelFontSize?: string;
+  cursor?: "pointer" | "text";
 };
 
 function Input(props: InputProps) {
   // prop destruction
-  const { name, label, labelWidth, labelHeight } = props;
+  const { labelName, isLabel, labelWidth, labelHeight } = props;
 
   // lib hooks
 
@@ -42,9 +45,9 @@ function Input(props: InputProps) {
   // effects
 
   // handlers
-  return label ? (
+  return isLabel ? (
     <FlexBox width={labelWidth} height={labelHeight} direction="column">
-      <StyledLabel htmlFor={name}>{name}</StyledLabel>
+      <StyledLabel htmlFor={labelName}>{labelName}</StyledLabel>
       <StyledInput {...props} />
     </FlexBox>
   ) : (
@@ -59,11 +62,15 @@ Input.defaultProps = {
   padding: "0 0 0 10px",
   boxSizing: "border-box",
   border: "1px solid gray",
+  cursor: "pointer",
 };
 
 const StyledLabel = styled.label``;
 
 const StyledInput = styled.input<InputProps>`
+  box-sizing: border-box;
+  /* TODO: hover 고치기..  */
+  ${(props) => (props.cursor ? `&:hover{cursor: ${props.cursor}}` : "")}
   ${(props) => (props.width ? `width: ${props.width}` : "")};
   ${(props) => (props.height ? `height: ${props.height}` : "")};
   ${(props) => (props.border ? `border: ${props.border}` : "")};
