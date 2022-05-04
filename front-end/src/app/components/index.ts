@@ -6,3 +6,4 @@ export * from "./Button";
 export * from "./Select";
 export * from "./Form";
 export * from "./Title";
+export * from "./Footer";
