@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Button, FlexBox, Input } from "../../components";
+import { Button, FlexBox, Input, Title } from "../../components";
 import { Form } from "../../components";
 import { actionCreators as userActions } from "../../redux/modules/user";
 
@@ -45,45 +45,36 @@ function SignInScreen() {
   console.log(inputData);
 
   return (
-    <Form
-      method="post"
-      width="400px"
-      height="200px"
-      border="2px solid red"
-      margin=" 50px auto"
-    >
-      로그인
+    <Form method="post" width="350px" height="400px" margin=" 50px auto">
+      <Title type="h2">로그인</Title>
       <FlexBox
-        width="400px"
-        height="100px"
+        height="150px"
         direction="column"
-        justifyContent="center"
+        justifyContent="space-between"
         alignItems="center"
-        margin="0 auto"
+        margin="40px auto 0"
       >
         <Input
+          isLabel={true}
+          labelName="아이디"
           name="id"
           type="text"
           placeholder="아이디"
-          fontSize="1rem"
-          radius="4px 4px 0 0"
-          borderBottom="0px"
           onChange={handleChange}
         />
         <Input
+          isLabel={true}
+          labelName="비밀번호"
           name="pwd"
           type="password"
           placeholder="비밀번호"
-          fontSize="1rem"
-          radius="0 0 4px 4px"
           onChange={handleChange}
         />
       </FlexBox>
       <Button
-        backgroundColor="#a374db"
+        backgroundColor="#864fc8"
         fontSize="1.2rem"
-        display="block"
-        margin="0 auto"
+        margin="30px auto 0"
         onClick={handleSubmit}
         type="button"
       >
