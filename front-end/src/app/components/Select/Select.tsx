@@ -64,15 +64,21 @@ Select.defaultProps = {
   margin: "0",
   padding: "0 0 0 10px",
   boxSizing: "border-box",
-  border: "1px solid gray",
+  labelHeight: "60px",
+  labelWidth: "300px",
 };
 
 const StyledLabel = styled.label``;
 
 const StyledSelect = styled.select<SelectProps>`
+  border: 1px solid #c9c9c9;
   &:hover {
     cursor: pointer;
   }
+  &::placeholder {
+    color: #b0b0b0;
+  }
+  border-radius: 4px;
   ${(props) => (props.width ? `width: ${props.width}` : "")};
   ${(props) => (props.height ? `height: ${props.height}` : "")};
   ${(props) => (props.radius ? `border-radius: ${props.radius}` : "")};
