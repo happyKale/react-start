@@ -40,7 +40,7 @@ function Button(props: ButtonProps) {
 
 Button.defaultProps = {
   width: "300px",
-  height: "35px",
+  height: "33px",
   margin: "0",
   padding: "0",
   boxSizing: "border-box",
@@ -51,6 +51,7 @@ Button.defaultProps = {
 };
 
 const StyledButton = styled.button<ButtonProps>`
+  display: block;
   &:hover {
     cursor: pointer;
   }
