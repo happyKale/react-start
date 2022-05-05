@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../Button";
 import { useHistory } from "react-router-dom";
 import { RootState } from "../../redux/configStore";
+import { FlexBox } from "../FlexBox";
 
 function Header() {
   // prop destruction
@@ -43,7 +44,7 @@ function Header() {
   console.log("헤더에서 로그인 상태: ", isLogin);
 
   return loginState ? (
-    <div>
+    <FlexBox>
       로그인 된 상태!{" "}
       <Button
         width="70px"
@@ -53,9 +54,9 @@ function Header() {
       >
         로그아웃
       </Button>
-    </div>
+    </FlexBox>
   ) : (
-    <div>
+    <FlexBox>
       로그인 안 된 상태!{" "}
       <Button
         width="120px"
@@ -65,7 +66,7 @@ function Header() {
       >
         로그인하러 가기
       </Button>
-    </div>
+    </FlexBox>
   );
 }
 
