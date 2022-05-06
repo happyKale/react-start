@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/configStore";
-import {
-  createProduct,
-  updateProduct,
-  deleteProduct,
-} from "../../redux/modules/product";
+import { ProductModel } from "../../models/product-model";
 
 function AdminScreen() {
   // prop destruction
@@ -34,7 +30,7 @@ function AdminScreen() {
   };
 
   const newNameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewName(event.target.value);
+    // setNewName(event.target.value);
   };
 
   const addProductHandler = () => {
@@ -42,20 +38,20 @@ function AdminScreen() {
     // 원본 배열 list에 새로운 요소를 추가해주었습니다.
     // 여긴 이제 주석처리!
     // setList([...list, text.current.value]);
-    dispatch(createProduct({ id: count, name: name }));
+    // dispatch(createProduct({ id: count, name: name }));
     setCount(count + 1);
     console.log(product_list);
   };
 
-  const updateProductHandler = (id: any, name: string) => {
+  const updateProductHandler = (id: number, name: string) => {
     return (event: React.MouseEvent) => {
-      dispatch(updateProduct({ id, name }));
+      // dispatch(updateProduct({ id, name }));
     };
   };
 
-  const deleteProductHandler = (id: any) => {
+  const deleteProductHandler = (id: number) => {
     return (event: React.MouseEvent) => {
-      dispatch(deleteProduct({ id }));
+      // dispatch(deleteProduct({ id }));
       event.preventDefault();
     };
   };
@@ -67,14 +63,14 @@ function AdminScreen() {
       <button onClick={addProductHandler}>제품 추가하기</button>
       <h1>제품 리스트</h1>
       <div>
-        {product_list.map((item: any) => {
+        {product_list.map((item: ProductModel) => {
           return (
             <div key={item.id}>
               <h4>{item.name}</h4>
               <input />
-              <button onClick={updateProductHandler(item.id, newName)}>
+              {/* <button onClick={updateProductHandler(item.id, newName)}>
                 수정하기
-              </button>
+              </button> */}
               <button onClick={deleteProductHandler(item.id)}>삭제</button>
             </div>
           );

@@ -24,7 +24,6 @@ type InputProps = {
   isLabel?: boolean;
   labelWidth?: string;
   labelHeight?: string;
-  labelFontSize?: string;
   cursor?: "pointer" | "text";
 };
 
@@ -46,7 +45,12 @@ function Input(props: InputProps) {
 
   // handlers
   return isLabel ? (
-    <FlexBox width={labelWidth} height={labelHeight} direction="column">
+    <FlexBox
+      width={labelWidth}
+      height={labelHeight}
+      direction="column"
+      justifyContent="space-between"
+    >
       <StyledLabel htmlFor={labelName}>{labelName}</StyledLabel>
       <StyledInput {...props} />
     </FlexBox>
@@ -57,18 +61,28 @@ function Input(props: InputProps) {
 
 Input.defaultProps = {
   width: "300px",
-  height: "35px",
+  height: "40px",
   margin: "0",
-  padding: "0 0 0 10px",
+  padding: "8px 12px",
   boxSizing: "border-box",
-  border: "1px solid gray",
   cursor: "pointer",
+  labelHeight: "65px",
+  labelWidth: "300px",
+  fontSize: "1rem",
+  radius: "4px",
 };
 
-const StyledLabel = styled.label``;
+const StyledLabel = styled.label`
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+`;
 
 const StyledInput = styled.input<InputProps>`
   box-sizing: border-box;
+  border: 1px solid #c9c9c9;
+  &::placeholder {
+    color: #b0b0b0;
+  }
   /* TODO: hover 고치기..  */
   ${(props) => (props.cursor ? `&:hover{cursor: ${props.cursor}}` : "")}
   ${(props) => (props.width ? `width: ${props.width}` : "")};

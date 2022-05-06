@@ -24,6 +24,8 @@ const initialState: { user: UserModel; is_login: boolean } = {
     phone: "010-1234-5678",
     address: "서울특별시 가나구 다라로 177",
     email: "abc@gmail.com",
+    birth: "1995-10-13",
+    gender: "male",
   },
   is_login: storage.getItem("isLogin") ? true : false,
 };
@@ -47,6 +49,8 @@ export default handleActions(
           phone: "",
           address: "",
           email: "",
+          birth: "0000-00-00",
+          gender: "male",
         };
         draft.is_login = false;
       }),
