@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, FlexBox, Form, Input, Select } from "../../components";
+import { Button, FlexBox, Form, Input, Select, Title } from "../../components";
 
 type SignUpForm = {
   id: string;
@@ -49,19 +49,13 @@ function SignUpScreen() {
   console.log("회원가입폼: ", inputData);
 
   return (
-    <Form
-      method="post"
-      width="400px"
-      height="700px"
-      border="2px solid red"
-      margin="20px auto"
-    >
-      회원가입
+    <Form method="post" width="400px" height="700px" margin="0 auto">
+      <Title type="h2">회원 가입</Title>
       <FlexBox
         width="400px"
         height="140px"
         direction="column"
-        justifyContent="center"
+        justifyContent="space-between"
         alignItems="center"
         margin="30px 0 0 0"
       >
@@ -70,9 +64,6 @@ function SignUpScreen() {
           type="text"
           name="id"
           placeholder="아이디"
-          fontSize="1rem"
-          radius="4px"
-          margin="0 0 10px 0"
           onChange={handleChange}
         />
         <Input
@@ -80,9 +71,6 @@ function SignUpScreen() {
           type="password"
           name="pwd"
           placeholder="비밀번호"
-          fontSize="1rem"
-          radius="4px"
-          margin="0 0 10px 0"
           onChange={handleChange}
         />
         <Input
@@ -90,93 +78,61 @@ function SignUpScreen() {
           type="password"
           name="pwdCheck"
           placeholder="비밀번호 재확인"
-          fontSize="1rem"
-          radius="4px"
           onChange={handleChange}
         />
       </FlexBox>
       <FlexBox
         width="400px"
-        height="400px"
+        height="360px"
         direction="column"
-        justifyContent="center"
+        justifyContent="space-between"
         alignItems="center"
-        margin="30px 0 0 0"
+        margin="20px 0 0 0"
       >
         <Input
           isLabel={true}
           cursor="text"
           name="name"
-          labelWidth="300px"
-          labelHeight="75px"
           labelName="이름"
           type="text"
           placeholder="이름"
-          fontSize="1rem"
-          radius="4px"
-          margin="5px auto 10px"
           onChange={handleChange}
         />
         <Input
           isLabel={true}
           cursor="text"
           name="phone"
-          labelWidth="300px"
-          labelHeight="75px"
           labelName="휴대전화"
           type="tel"
           placeholder="전화번호"
-          fontSize="1rem"
-          radius="4px"
-          margin="0 0 10px 0"
           onChange={handleChange}
         />
         <Input
           isLabel={true}
           cursor="text"
           name="email"
-          labelWidth="300px"
-          labelHeight="75px"
           labelName="이메일"
           type="email"
           placeholder="이메일"
-          fontSize="1rem"
-          radius="4px"
-          margin="0 0 10px 0"
           onChange={handleChange}
         />
         <Input
           isLabel={true}
           name="birth"
-          labelWidth="300px"
-          labelHeight="75px"
           labelName="생년월일"
           type="date"
-          fontSize="1rem"
-          radius="4px"
-          margin="0 0 10px 0"
           onChange={handleChange}
         />
         <Select
           name="gender"
           isLabel={true}
-          labelWidth="300px"
-          labelHeight="75px"
           labelName="성별"
           optionList={optionList}
-          fontSize="1rem"
-          radius="4px"
-          margin="0 0 10px 0"
           onChange={handleChange}
         />
       </FlexBox>
-      <Button
-        backgroundColor="#864fc8"
-        fontSize="1.2rem"
-        margin="0 auto"
-        display="block"
-      >
-        회원가입
+      <Button backgroundColor="#864fc8" fontSize="1.2rem" margin="30px auto 0">
+        가입하기
       </Button>
     </Form>
   );

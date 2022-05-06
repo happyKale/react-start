@@ -9,5 +9,9 @@ export type UserModel = {
 
   email: string;
 
+  birth: string;
+
+  gender: "male" | "female";
+
   role: "admin" | "customer";
 };
