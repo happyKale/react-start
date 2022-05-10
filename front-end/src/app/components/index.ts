@@ -8,7 +8,6 @@ export * from "./Form";
 export * from "./Title";
 export * from "./Footer";
 export * from "./Header";
-export * from "./Link";
 export * from "./CartList";
 export * from "./CartItem";
 export * from "./CartOrderForm";
