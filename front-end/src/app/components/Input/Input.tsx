@@ -9,7 +9,6 @@ type InputProps = {
   placeholder?: string;
   name?: string;
   labelName?: string;
-  required?: boolean;
   width?: string;
   height?: string;
   margin?: string;
@@ -49,7 +48,7 @@ function Input(props: InputProps) {
       width={labelWidth}
       height={labelHeight}
       direction="column"
-      justifyContent="space-between"
+      justifyContent="center"
     >
       <StyledLabel htmlFor={labelName}>{labelName}</StyledLabel>
       <StyledInput {...props} />
@@ -65,7 +64,7 @@ Input.defaultProps = {
   margin: "0",
   padding: "8px 12px",
   boxSizing: "border-box",
-  cursor: "pointer",
+  cursor: "text",
   labelHeight: "65px",
   labelWidth: "300px",
   fontSize: "1rem",
