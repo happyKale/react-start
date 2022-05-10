@@ -11,3 +11,4 @@ export * from "./Header";
 export * from "./CartList";
 export * from "./CartItem";
 export * from "./CartOrderForm";
+export * from "./Path";
