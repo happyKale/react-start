@@ -24,6 +24,8 @@ type InputProps = {
   labelWidth?: string;
   labelHeight?: string;
   cursor?: "pointer" | "text";
+  id?: string;
+  multiple?: boolean;
 };
 
 function Input(props: InputProps) {
