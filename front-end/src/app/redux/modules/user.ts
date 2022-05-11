@@ -2,18 +2,34 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { storage } from "../../libs/storage";
 import { UserModel } from "../../models/user-model";
+import { userRepository } from "../../repositories";
 
 // 액션 타입
-const LOG_IN = "LOG_IN";
-const LOG_OUT = "LOG_OUT";
-const GET_USER = "GET_USER";
+const SIGN_UP = "SIGN_UP";
+const SIGN_IN = "SIGN_IN";
+const SIGN_OUT = "SIGN_OUT";
+const DELETE_USER = "DELETE_USER";
 
 // 액션 생성 함수
-const logIn = createAction(LOG_IN, (user: { id: string; pwd: string }) => ({
+const signUp = createAction(
+  SIGN_UP,
+  (user: {
+    id: string;
+    pwd: string;
+    name: string;
+    phone: string;
+    email: string;
+    birth: string;
+    gender: "male" | "female" | "none";
+  }) => ({ user })
+);
+const signIn = createAction(SIGN_IN, (user: { id: string; pwd: string }) => ({
   user,
 }));
-const logOut = createAction(LOG_OUT, () => ({}));
-const getUser = createAction(GET_USER, (user: UserModel) => ({ user }));
+const signOut = createAction(SIGN_OUT, () => ({}));
+const deleteUser = createAction(DELETE_USER, (user: { id: string }) => ({
+  user,
+}));
 
 // initialState
 const initialState: { user: UserModel; is_login: boolean } = {
@@ -30,38 +46,82 @@ const initialState: { user: UserModel; is_login: boolean } = {
   is_login: storage.getItem("isLogin") ? true : false,
 };
 
+// 미들웨어
+const signUpDB = (userInfo: {
+  id: string;
+  pwd: string;
+  name: string;
+  phone: string;
+  email: string;
+  birth: string;
+  gender: "male" | "female" | "none";
+}) => {
+  return async (
+    dispatch: any,
+    getState: UserModel & boolean,
+    { history }: any
+  ) => {
+    try {
+      console.log("여기가 회원가입 미들웨어 axios호출 바로 전!!!");
+      const response = await userRepository.signUp(userInfo);
+      response && history.push("/signin");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const signInDB = (userInfo: { id: string; pwd: string }) => {
+  return async (
+    dispatch: any,
+    getState: UserModel & boolean,
+    { history }: any
+  ) => {
+    try {
+      console.log("여기가 로그인 미들웨어 axios호출 바로 전!!!");
+      const response = await userRepository.signIn(userInfo);
+      response && history.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 // 리듀서
 export default handleActions(
   {
-    [LOG_IN]: (state, action) =>
+    [SIGN_UP]: (state, action) =>
+      produce(state, (draft) => {
+        draft.user = action.payload.user;
+        draft.is_login = true;
+      }),
+    [SIGN_IN]: (state, action) =>
       produce(state, (draft) => {
         storage.setItem("isLogin", "true");
         draft.user = action.payload.user;
         draft.is_login = true;
       }),
-    [LOG_OUT]: (state, action) =>
+    [SIGN_OUT]: (state, action) =>
       produce(state, (draft) => {
         storage.clear();
         draft.user = {
           id: 0,
           name: "",
-          role: "customer",
+          role: "member",
           phone: "",
           address: "",
           email: "",
           birth: "0000-00-00",
-          gender: "male",
+          gender: "none",
         };
         draft.is_login = false;
       }),
-    [GET_USER]: (state, action) => produce(state, (draft) => {}),
   },
   initialState
 );
 
-const actionCreators = {
-  logIn,
-  logOut,
-  getUser,
+export const userActions = {
+  signUpDB,
+  signInDB,
+  signOut,
 };
-export { actionCreators };
