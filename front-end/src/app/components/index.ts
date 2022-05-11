@@ -15,3 +15,4 @@ export * from "./Path";
 export * from "./Image";
 export * from "./QuantitySelect";
 export * from "./TextBox";
+export * from "./ImageUpload";
