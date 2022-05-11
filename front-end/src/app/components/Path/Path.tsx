@@ -1,7 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-function Path() {
+type PathProps = {
+  url: string;
+  name: string;
+};
+
+function Path(props: PathProps) {
   // prop destruction
+  const { url, name } = props;
 
   // lib hooks
 
@@ -16,7 +24,15 @@ function Path() {
   // effects
 
   // handlers
-  return <div>Path</div>;
+  return <StyledLink to={url}>{name}</StyledLink>;
 }
+
+const StyledLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+  &:hover {
+    color: #b261cd;
+  }
+`;
 
 export { Path };
