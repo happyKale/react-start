@@ -15,8 +15,11 @@ type FlexBoxProps = {
   width: string;
   height?: string;
   border?: string;
+  padding?: string;
   margin?: string;
   boxSizing?: string;
+  radius?: string;
+  backgroundColor?: string;
 };
 
 function FlexBox(props: FlexBoxProps) {
@@ -48,6 +51,8 @@ const StyledBox = styled.div<FlexBoxProps>`
   display: flex;
   box-sizing: border-box;
   ${(props) => (props.direction ? `flex-direction: ${props.direction}` : "")};
+  ${(props) =>
+    props.backgroundColor ? `background-color: ${props.backgroundColor}` : ""};
   ${(props) => (props.wrap ? `flex-wrap: ${props.wrap}` : "")};
   ${(props) =>
     props.justifyContent ? `justify-content: ${props.justifyContent}` : ""};
@@ -63,6 +68,8 @@ const StyledBox = styled.div<FlexBoxProps>`
   ${(props) => (props.height ? `height: ${props.height}` : "")};
   ${(props) => (props.border ? `border: ${props.border}` : "")};
   ${(props) => (props.margin ? `margin: ${props.margin}` : "")};
+  ${(props) => (props.padding ? `padding: ${props.padding}` : "")};
+  ${(props) => (props.radius ? `border-radius: ${props.radius}` : "")};
 `;
 
 export { FlexBox };
