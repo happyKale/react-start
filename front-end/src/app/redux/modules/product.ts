@@ -16,8 +16,6 @@ const remove = createAction(REMOVE, (product: ProductModel) => ({ product }));
 
 // 초기 상태값
 const initialState: { list: Array<ProductModel> } = {
-  // product 리스트를 가지고 있음.
-  // models 폴더에 product 모델을 만들어야 될 듯???
   list: [
     {
       id: 1,
