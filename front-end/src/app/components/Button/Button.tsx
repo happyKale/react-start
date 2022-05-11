@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 type ButtonProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  type?: "button" | "submit" | "reset" | undefined;
+  type: "button" | "submit" | "reset";
   children: string;
   width?: string;
   height?: string;
@@ -39,6 +39,7 @@ function Button(props: ButtonProps) {
 }
 
 Button.defaultProps = {
+  type: "button",
   width: "300px",
   height: "33px",
   margin: "0",
