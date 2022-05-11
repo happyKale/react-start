@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 type FormProps = {
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
   children?: React.ReactNode;
   method: string;
   width?: string;
