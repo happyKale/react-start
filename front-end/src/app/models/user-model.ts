@@ -11,7 +11,7 @@ export type UserModel = {
 
   birth: string;
 
-  gender: "male" | "female";
+  gender: "male" | "female" | "none";
 
-  role: "admin" | "customer";
+  role: "admin" | "member";
 };
