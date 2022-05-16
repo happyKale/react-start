@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 type ButtonProps = {
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLElement>;
   type: "button" | "submit" | "reset";
   children: string;
+  name?: string;
   width?: string;
   height?: string;
   border?: string;
