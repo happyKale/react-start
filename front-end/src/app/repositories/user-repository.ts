@@ -1,28 +1,23 @@
 import { httpClient } from "../libs/http-client";
 
-type SignUpData = {
-  id: string;
-  pwd: string;
-  name: string;
-  phone: string;
-  email: string;
-  birth: string;
-  gender: "male" | "female" | "none";
-};
-
-type SignInData = {
-  id: string;
-  pwd: string;
-};
-
 const userRepository = {
-  signIn(userInfo: SignInData) {
-    return httpClient.post("/users/signin", { ...userInfo }).then((res) => {
+  signIn(data: { userId: string; password: string }) {
+    return httpClient.post("/users/signin", data).then((res) => {
       return res;
     });
   },
-  signUp(userInfo: SignUpData) {
-    return httpClient.post("/users/signup", { ...userInfo }).then((res) => {
+  signUp(data: {
+    userId: string;
+    password: string;
+    name: string;
+    email: string;
+  }) {
+    return httpClient.post("/users/signup", data).then((res) => {
+      return res;
+    });
+  },
+  dataCheck(data: { target: string; value: string }) {
+    return httpClient.post("/users/signup/check", data).then((res) => {
       return res;
     });
   },
