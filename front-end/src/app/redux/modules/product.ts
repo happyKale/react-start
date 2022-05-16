@@ -45,10 +45,9 @@ export default handleActions(
   initialState
 );
 
-const actionCreators = {
+export const productActions = {
   load,
   create,
   update,
   remove,
 };
-export { actionCreators };
