@@ -53,14 +53,8 @@ export default handleActions(
   initialState
 );
 
-const actionCreators = {
+export const cartActions = {
   load,
   update,
   remove,
 };
-export { actionCreators };
-
-// [CREATE]: (state, action) =>
-//   produce(state, (draft) => {
-//     draft.list = [...state.list];
-//   }),
