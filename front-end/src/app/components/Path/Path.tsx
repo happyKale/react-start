@@ -2,14 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-type PathProps = {
-  url: string;
-  name: string;
-};
-
-function Path(props: PathProps) {
+function Path(props: { to: string; children: string; height?: string }) {
   // prop destruction
-  const { url, name } = props;
+  const { to, children } = props;
 
   // lib hooks
 
@@ -24,15 +19,24 @@ function Path(props: PathProps) {
   // effects
 
   // handlers
-  return <StyledLink to={url}>{name}</StyledLink>;
+  return (
+    <StyledLink {...props} to={to}>
+      {children}
+    </StyledLink>
+  );
 }
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link)<{
+  to: string;
+  children: string;
+  height?: string;
+}>`
   color: black;
   text-decoration: none;
   &:hover {
     color: #b261cd;
   }
+  ${(props) => (props.height ? `height: ${props.height}` : "")};
 `;
 
 export { Path };
